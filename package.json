@@ -1,0 +1,22 @@
+{
+  "name": "vaxfind",
+  "version": "1.0.0",
+  "description": "node automation script to notify when vaccine is available for 18+",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "vaxfind"
+  ],
+  "author": "tejasav dutt",
+  "license": "ISC",
+  "dependencies": {
+    "input": "^1.0.1",
+    "nexe": "^4.0.0-beta.18",
+    "node-fetch": "^2.6.1",
+    "node-notifier": "^9.0.1",
+    "puppeteer": "^9.1.1",
+    "sha256": "^0.2.0"
+  }
+}
