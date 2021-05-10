@@ -18,7 +18,7 @@ async function init(){
     }
 
     let selected_state = await input.select("please select your state",state_name_array,{
-        default:'Uttar Pradesh'
+        // default:'Uttar Pradesh'
     });
     if(!selected_state){
         return common.error("failed-select_state");
@@ -37,7 +37,7 @@ async function init(){
     }
 
     let selected_district = await input.select("please select your district",district_name_array,{
-        default:'Ghaziabad'
+        // default:'Ghaziabad'
     });
     if(!selected_district){
         return common.error("failed-selected_district");

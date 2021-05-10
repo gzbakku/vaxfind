@@ -1,10 +1,24 @@
+const common = require("./common");
 
 
 module.exports = {lookout:lookout};
 
 async function lookout(location){
+
+    let min_age = await input.select("select min age",["45","18"],{
+        default:"18"
+    });
+    if(!min_age){
+        return common.error("invalid min age");
+    }
+    min_age = Number(min_age); 
+
+    console.log("\n---------------------------------\n");
+    common.log("this step can take upto 24 hours to find any available booking slots for vaccine in india please keep checking the results frequently the vaccine slots are only available for a mere 100-186 seconds.");
+    console.log("\n---------------------------------\n");
+    let hold = spinner('Finding Vaccine Sessions').start();
+
     return new Promise((resolve,reject)=>{
-        let min_age,index = 0;
         async function find(location){
             let lookup = await init(location,min_age);
             if(!lookup){
@@ -13,19 +27,19 @@ async function lookout(location){
                 },5000);
                 return;
             }
-            console.log("+++ lookup " + index);
-            index++;
-            if(!min_age){min_age = lookup.min_age;}
             if(lookup.centers.length > 0){
+                hold.stop();
+                console.log("\n\n");
                 resolve(lookup.centers);
             } else {
                 setTimeout(()=>{
-                    find(location);
+                    find(location,min_age);
                 },5000);
             }
         }
         find(location);
     });
+
 }
 
 async function init(location,min_age){
@@ -38,15 +52,9 @@ async function init(location,min_age){
     });
     if(!get_sessions){return common.error("failed-get_sessions");}
 
-    if(!min_age){
-        min_age = await input.select("select min age",["45","18"],{
-            default:"18"
-        });
-        min_age = Number(min_age);
-    }
-
     let selected_centers = [];
     for(let center of get_sessions.centers){
+        
         for(let session of center.sessions){
             if(session.min_age_limit === min_age){
                 if(session.available_capacity > 0){

@@ -1,4 +1,4 @@
-const puppeteer = require('puppeteer');
+
 const common = require('./common');
 const request = require('./request');
 global.common = require("./common");
@@ -7,6 +7,7 @@ global.fetch = require('node-fetch');
 global.request = require("./request");
 global.sha256 = require("sha256");
 global.notifier = require("node-notifier");
+global.spinner = require("ora");
 
 const login = require("./login");
 const location = require("./location");
@@ -17,10 +18,10 @@ main();
 
 async function main(){
 
-    let login_now = await login.init();
-    if(!login_now){
-        return common.error("failed-login");
-    }
+    // let login_now = await login.init();
+    // if(!login_now){
+    //     return common.error("failed-login");
+    // }
 
     // let get_beneficiaries = await beneficiaries.init(login_now);
     // if(!get_beneficiaries){

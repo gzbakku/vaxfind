@@ -1,7 +1,7 @@
 {
   "name": "vaxfind",
-  "version": "1.0.0",
-  "description": "node automation script to notify when vaccine is available for 18+",
+  "version": "1.1.0",
+  "description": "node automation script to notify when vaccine is available in india.",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -13,10 +13,21 @@
   "license": "ISC",
   "dependencies": {
     "input": "^1.0.1",
-    "nexe": "^4.0.0-beta.18",
     "node-fetch": "^2.6.1",
     "node-notifier": "^9.0.1",
-    "puppeteer": "^9.1.1",
+    "ora": "^5.4.0",
     "sha256": "^0.2.0"
-  }
+  },
+  "bin": {
+    "vaxfind": "./bin/index.js"
+  },
+  "preferGlobal": true,
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gzbakku/vaxfind.git"
+  },
+  "bugs": {
+    "url": "https://github.com/gzbakku/vaxfind/issues"
+  },
+  "homepage": "https://github.com/gzbakku/vaxfind#readme"
 }
